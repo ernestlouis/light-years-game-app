@@ -9,3 +9,12 @@ target_link_libraries(
 	PUBLIC
 	${LIGHT_YEARS_ENGINE_TARGET_NAME}
 )
+
+#Future-proofing w/ zero manual DLL listing
+add_custom_command (TARGET ${LIGHT_YEARS_GAME_TARGET_NAME} POST_BUILD
+	COMMAND	${CMAKE_COMMAND} -E copy_if_different
+		$<TARGET_RUNTIME_DLLS:${LIGHT_YEARS_GAME_TARGET_NAME}>
+		$<TARGET_FILE_DIR:${LIGHT_YEARS_GAME_TARGET_NAME}>
+	COMMAND_EXPAND_LISTS
+)
+
