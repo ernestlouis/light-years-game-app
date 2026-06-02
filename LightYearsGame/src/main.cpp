@@ -1,30 +1,21 @@
 #include <iostream>
+#include <memory>
 #include <SFML/Graphics.hpp>
+
+#include "framework/Application.h"
+
+
 
 int main()
 {
-    sf::RenderWindow window(
-        sf::VideoMode(800, 600),
-        "MyWindow"
-    );
+ 
+	//Allocate Application on the heap using RAII
+	auto app = std::make_unique<ly::Application>();
+	
+	app->Run();
+  
 
-    std::cout << "Light Years Game Started!" << std::endl;
-
-    while (window.isOpen())
-    {
-        sf::Event event;
-
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-            {
-                window.close();
-            }
-        }
-
-        window.clear(sf::Color::Black);
-        window.display();
-    }
+   
 
 
 }
