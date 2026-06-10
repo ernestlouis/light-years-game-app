@@ -28,9 +28,8 @@ namespace ly
                 }
             }
 
-            
-
             accumulated_time += m_tick_clock.restart().asSeconds();
+
             while (accumulated_time > target_delta_time)
             {
                 accumulated_time -= target_delta_time;

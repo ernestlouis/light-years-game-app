@@ -7,7 +7,8 @@ namespace ly
 	{
 	public:
 		Application();
-		void Run();
+		virtual void Run();
+		virtual ~Application() = default;
 
 	private:
 		void Tick_Internal(float delta_time);
@@ -21,6 +22,8 @@ namespace ly
 		sf::Clock m_tick_clock;
 		
 	};
+
+
 	
 
 }
