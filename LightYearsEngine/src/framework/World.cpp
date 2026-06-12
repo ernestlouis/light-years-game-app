@@ -32,13 +32,21 @@ namespace ly
 
 		m_pending_actors.clear();
 		
-		for (shared<Actor> actor : m_actors)
+		for (auto iter = m_actors.begin(); iter != m_actors.end();)
 		{
-			actor->Tick(delta_time);
+			if (iter->get()->Is_Pending_Destroy())
+			{
+				iter = m_actors.erase(iter);
+			}
+			else
+			{
+				iter->get()->Tick(delta_time);
+				++iter;
+			}
+		
 		}
 
 		Tick(delta_time);
-		
 	}
 
 	World::~World()
