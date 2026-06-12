@@ -1,8 +1,10 @@
 #pragma once
 
+#include "framework/Core.h"
+
 namespace ly
 {
 	class Application;
 }
 
-std::unique_ptr<ly::Application> GetApplication();
+ly::unique<ly::Application> GetApplication();

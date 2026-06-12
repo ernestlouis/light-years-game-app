@@ -1,16 +1,17 @@
-#include <memory>
-
 #include "gameFramework/GameApplication.h"
+#include "framework/Core.h"
+#include "framework/World.h"
 
-std::unique_ptr<ly::Application> GetApplication()
+
+ly::unique<ly::Application> GetApplication()
 {
-	return std::make_unique<ly::GameApplication>();
+	return ly::unique<ly::Application>(new ly::GameApplication());
 }
 
 namespace ly
 {
 	GameApplication::GameApplication()
 	{
-
+		Load_World<World>();
 	}
 }
