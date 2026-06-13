@@ -4,15 +4,16 @@
 
 namespace ly
 {
-    Application::Application()
-        :m_window{ sf::VideoMode(800, 600),"MyWindow" },
+
+    Application::Application(u32 window_width, u32 window_height, const std::string& title, sf::Uint32 style)
+        :m_window{ sf::VideoMode(window_width, window_height),title,style},
         m_target_frame_rate{ 60.f },
         m_tick_clock{},
-        m_current_world{nullptr}
-	{
-	}
+        m_current_world{ nullptr }
+    {
+    }
 
-	void Application::Run()
+    void Application::Run()
 	{
         m_tick_clock.restart();
         float accumulated_time = 0.f;
@@ -63,12 +64,10 @@ namespace ly
 
     void Application::Render()
     {
-        sf::CircleShape circ{ 50 };
-        circ.setFillColor(sf::Color::Green);
-        circ.setOrigin(50, 50);
-        circ.setPosition(m_window.getSize().x / 2.f, m_window.getSize().y / 2.f);
-
-        m_window.draw(circ);
+        if (m_current_world)
+        {
+            m_current_world->Render(m_window);
+        }
     }
 
     void Application::Tick(float delta_time)

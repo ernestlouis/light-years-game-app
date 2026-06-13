@@ -8,7 +8,7 @@ namespace ly
 	class Application
 	{
 	public:
-		Application();
+		Application(u32 window_width, u32 window_height, const std::string& title, sf::Uint32 style );
 		virtual void Run();
 		virtual ~Application() = default;
 

@@ -12,10 +12,12 @@ ly::unique<ly::Application> GetApplication()
 namespace ly
 {
 	GameApplication::GameApplication()
+		:Application{600,900,"Light Years",sf::Style::Titlebar | sf::Style::Close}
 	{
 		weak<World> new_world = Load_World<World>();
 		new_world.lock()->Spawn_Actor<Actor>();
 		actor_to_destroy = new_world.lock()->Spawn_Actor<Actor>();
+		actor_to_destroy.lock()->Set_Texture("C:/dev/light-years-game-app/LightYearsGame/assets/SpaceShooterRedux/PNG/playerShip1_blue.png");
 		counter = 0;
 
 	}

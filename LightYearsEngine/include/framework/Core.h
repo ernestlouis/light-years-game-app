@@ -32,6 +32,11 @@ namespace ly
 
 	using unit8 = unsigned char;
 
+	using u8 = uint8_t;
+	using u16 = uint16_t;
+	using u32 = uint32_t;
+	using u64 = uint64_t;
+
 	//a macro
 	#define LOG(M, ...) printf(M "\n", ##__VA_ARGS__)
 }

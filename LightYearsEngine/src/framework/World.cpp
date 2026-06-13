@@ -2,6 +2,9 @@
 #include "framework/Core.h"
 #include "framework/Actor.h"
 
+#include <SFML/Graphics.hpp>
+
+
 namespace ly
 {
 	World::World(Application* owning_app)
@@ -40,13 +43,21 @@ namespace ly
 			}
 			else
 			{
-				iter->get()->Tick(delta_time);
+				iter->get()->Tick_Internal(delta_time);
 				++iter;
 			}
 		
 		}
 
 		Tick(delta_time);
+	}
+
+	void World::Render(sf::RenderWindow& window)
+	{
+		for (auto& actor : m_actors)
+		{
+			actor->Render(window);
+		}
 	}
 
 	World::~World()
