@@ -27,6 +27,8 @@ namespace ly
 		sf::Clock m_tick_clock;
 		
 		shared<World> m_current_world;
+		sf::Clock m_clean_cycle_clock;
+		float m_clean_cycle_interval;
 	};
 
 	template<typename World_Type>

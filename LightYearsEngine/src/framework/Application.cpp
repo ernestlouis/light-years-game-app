@@ -1,6 +1,7 @@
 #include "framework/Application.h"
 #include "framework/Core.h"
 #include "framework/World.h"
+#include "framework/AssetManager.h"
 
 namespace ly
 {
@@ -9,7 +10,9 @@ namespace ly
         :m_window{ sf::VideoMode(window_width, window_height),title,style},
         m_target_frame_rate{ 60.f },
         m_tick_clock{},
-        m_current_world{ nullptr }
+        m_current_world{ nullptr },
+        m_clean_cycle_clock{},
+        m_clean_cycle_interval{2.f}
     {
     }
 
@@ -50,6 +53,12 @@ namespace ly
         if (m_current_world)
         {
             m_current_world->Tick_Internal(delta_time);
+        }
+
+        if (m_clean_cycle_clock.getElapsedTime().asSeconds() >= m_clean_cycle_interval)
+        {
+            m_clean_cycle_clock.restart();
+            AssetManager::Get().Clean_Cycle();
         }
     }
 

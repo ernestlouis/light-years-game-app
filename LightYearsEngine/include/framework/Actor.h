@@ -26,7 +26,7 @@ namespace ly
 		bool m_has_began_play;
 
 		sf::Sprite m_sprite;
-		sf::Texture m_texture;
+		shared<sf::Texture> m_texture;
 
 	};
 }

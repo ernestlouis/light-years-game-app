@@ -1,5 +1,6 @@
 #include "framework/Actor.h"
 #include "framework/Core.h"
+#include "framework/AssetManager.h"
 
 namespace ly
 {
@@ -30,7 +31,7 @@ namespace ly
 	{
 		if (!Is_Pending_Destroy())
 		{
-			Tick(delta_time);
+
 		}
 	}
 
@@ -41,17 +42,21 @@ namespace ly
 
 	void Actor::Tick(float delta_time)
 	{
-		LOG("Actor Ticking");
+
 	}
 
 	void Actor::Set_Texture(const std::string& texture_path)
 	{
-		m_texture.loadFromFile(texture_path);
-		m_sprite.setTexture(m_texture);
+
+		m_texture = AssetManager::Get().Load_Texture(texture_path);
+		if (!m_texture)
+			return;
+
+		m_sprite.setTexture(*m_texture);
 
 
-		int texture_width = m_texture.getSize().x;
-		int texture_height = m_texture.getSize().y;
+		int texture_width = m_texture->getSize().x;
+		int texture_height = m_texture->getSize().y;
 		m_sprite.setTextureRect(sf::IntRect{ sf::Vector2i{}, sf::Vector2i{ texture_width,texture_height } });
 
 
