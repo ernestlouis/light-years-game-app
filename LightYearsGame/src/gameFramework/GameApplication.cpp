@@ -19,18 +19,13 @@ namespace ly
 		new_world.lock()->Spawn_Actor<Actor>();
 		actor_to_destroy = new_world.lock()->Spawn_Actor<Actor>();
 		actor_to_destroy.lock()->Set_Texture(Get_Resource_Dir() + "SpaceShooterRedux/PNG/playerShip1_blue.png");
+		actor_to_destroy.lock()->Set_Actor_Location(sf::Vector2f(300.f, 450.f));
+		actor_to_destroy.lock()->Set_Actor_Rotation(90.f);
 		counter = 0;
-
 	}
+
 	void GameApplication::Tick(float delta_time)
 	{
-		counter += delta_time;
-		if (counter > 2.f)
-		{
-			if (!actor_to_destroy.expired())
-			{
-				actor_to_destroy.lock()->Destroy();
-			}
-		}
+
 	}
 }
