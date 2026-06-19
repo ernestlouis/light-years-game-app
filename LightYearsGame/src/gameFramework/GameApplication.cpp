@@ -2,6 +2,7 @@
 #include "framework/Core.h"
 #include "framework/World.h"
 #include "framework/Actor.h"
+#include "spaceship/Spaceship.h"
 #include "config.h"
 
 
@@ -17,10 +18,11 @@ namespace ly
 	{
 		weak<World> new_world = Load_World<World>();
 		new_world.lock()->Spawn_Actor<Actor>();
-		actor_to_destroy = new_world.lock()->Spawn_Actor<Actor>();
-		actor_to_destroy.lock()->Set_Texture(Get_Resource_Dir() + "SpaceShooterRedux/PNG/playerShip1_blue.png");
-		actor_to_destroy.lock()->Set_Actor_Location(sf::Vector2f(300.f, 450.f));
-		actor_to_destroy.lock()->Set_Actor_Rotation(90.f);
+		test_player_spaceship = new_world.lock()->Spawn_Actor<Spaceship>();
+		test_player_spaceship.lock()->Set_Texture(Get_Resource_Dir() + "SpaceShooterRedux/PNG/playerShip1_blue.png");
+		test_player_spaceship.lock()->Set_Actor_Location(sf::Vector2f(300.f, 450.f));
+		test_player_spaceship.lock()->Set_Actor_Rotation(0.f);
+		test_player_spaceship.lock()->Set_Velocity(sf::Vector2f(0.f, -200.f));
 		counter = 0;
 	}
 

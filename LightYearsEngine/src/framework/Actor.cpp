@@ -32,7 +32,7 @@ namespace ly
 	{
 		if (!Is_Pending_Destroy())
 		{
-
+			Tick(delta_time);
 		}
 	}
 
@@ -114,14 +114,10 @@ namespace ly
 	{
 		sf::FloatRect bound = m_sprite.getLocalBounds();
 		m_sprite.setOrigin(
-			bound.width / 1.f, 
+			bound.width / 2.f, 
 			bound.height / 2.f
 		);
 
-		auto origin = m_sprite.getOrigin();
-
-		LOG("Origin X: %f",origin.x);
-		LOG("Origin Y: %f",origin.y);
 	}
 
 }
