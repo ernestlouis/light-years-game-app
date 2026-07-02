@@ -13,6 +13,8 @@ namespace ly
 			float Get_Speed() const;
 		private:
 			void Handle_Input();
+			void Normalize_Input();
+			void Clamp_Input_On_Edge();
 			void Consume_Input(float delta_time);
 			sf::Vector2f m_move_input;
 			float m_speed;

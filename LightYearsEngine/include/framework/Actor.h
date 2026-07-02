@@ -30,6 +30,8 @@ namespace ly
 		sf::Vector2f Get_Actor_Forward_Direction() const;
 		sf::Vector2f Get_Actor_Right_Direction() const;
 
+		sf::Vector2u Get_Window_Size() const;
+
 	private:
 		void Center_Pivot();
 

@@ -1,6 +1,7 @@
 #include "framework/World.h"
 #include "framework/Core.h"
 #include "framework/Actor.h"
+#include "framework/Application.h"
 
 #include <SFML/Graphics.hpp>
 
@@ -77,6 +78,9 @@ namespace ly
 	}
 
 
-
+	sf::Vector2u World::Get_Window_Size() const
+	{
+		return m_owning_app->Get_Window_Size();
+	}
 
 }

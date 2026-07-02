@@ -21,6 +21,8 @@ namespace ly
 			template<typename Actor_Type>
 			weak<Actor_Type> Spawn_Actor();
 
+			sf::Vector2u Get_Window_Size() const;
+
 		private:
 			void Begin_Play();
 			void Tick(float delta_time);
@@ -29,6 +31,8 @@ namespace ly
 
 			List<shared<Actor>> m_actors;
 			List<shared<Actor>> m_pending_actors;
+
+
 
 	};
 

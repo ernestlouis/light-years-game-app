@@ -25,6 +25,8 @@ namespace ly
 		test_player_spaceship.lock()->Set_Actor_Location(sf::Vector2f(300.f, 450.f));
 		test_player_spaceship.lock()->Set_Actor_Rotation(0.f);
 
+		
+
 	}
 
 	void GameApplication::Tick(float delta_time)

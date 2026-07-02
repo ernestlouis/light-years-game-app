@@ -1,5 +1,6 @@
 #include "player/PlayerSpaceship.h"
 #include "SFML/System.hpp"
+#include "framework/MathUtility.h"
 
 namespace ly
 {
@@ -30,7 +31,9 @@ namespace ly
 
 	void PlayerSpaceship::Handle_Input()
 	{
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+		
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::W) )
 		{
 			m_move_input.y = -1.f;
 		}
@@ -39,13 +42,46 @@ namespace ly
 			m_move_input.y = 1.f;
 		}
 		
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::A) )
 		{
 			m_move_input.x = -1.f;
 		}
-		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D) )
 		{
 			m_move_input.x = 1.f;
+		}
+
+		Clamp_Input_On_Edge();
+		Normalize_Input();
+
+	}
+
+	void PlayerSpaceship::Normalize_Input()
+	{
+		Normalize(m_move_input);
+	}
+	//sf::Vector2f(300.f, 450.f)
+	void PlayerSpaceship::Clamp_Input_On_Edge()
+	{
+		sf::Vector2f actor_location = Get_Actor_Location();
+		if (actor_location.x < 0.f && m_move_input.x == -1.f)
+		{
+			m_move_input.x = 0.f;
+		}
+
+		if (actor_location.x > Get_Window_Size().x && m_move_input.x == 1.f)
+		{
+			m_move_input.x = 0.f;
+		}
+
+		if (actor_location.y < 0.f && m_move_input.y == -1.f)
+		{
+			m_move_input.y = 0.f;
+		}
+
+		if (actor_location.y > Get_Window_Size().y && m_move_input.y == 1.f)
+		{
+			m_move_input.y = 0.f;
 		}
 
 	}
@@ -57,3 +93,5 @@ namespace ly
 	}
 
 }
+
+
