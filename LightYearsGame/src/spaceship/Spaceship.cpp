@@ -20,4 +20,9 @@ namespace ly
 	{
 		return m_velocity;
 	}
+
+	void Spaceship::Shoot()
+	{
+
+	}
 }

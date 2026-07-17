@@ -12,7 +12,11 @@ ${CMAKE_CURRENT_SOURCE_DIR}/src/player/Player.cpp
 ${CMAKE_CURRENT_SOURCE_DIR}/include/player/PlayerSpaceship.h
 ${CMAKE_CURRENT_SOURCE_DIR}/src/player/PlayerSpaceship.cpp
 
+${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/Shooter.h
+${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/Shooter.cpp
 
+${CMAKE_CURRENT_SOURCE_DIR}/include/weapon/BulletShooter.h
+${CMAKE_CURRENT_SOURCE_DIR}/src/weapon/BulletShooter.cpp
 
 )
 
